@@ -110,3 +110,16 @@
    padding: 10px 0;
    font-size: 18px;
  }
+
+ #menu li:hover {
+   background-color: gray;
+   color: white;
+ }
+ 
+ 
+
+ #menuToggle input:checked ~ ul
+ {
+   transform: scale(1.0, 1.0);
+   opacity: 1;
+ }
