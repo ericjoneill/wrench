@@ -83,3 +83,14 @@ let Category = styled.h1`
     font-weight: bold;
     line-height: 18px;
 `;
+let IconContainer = styled.div`
+    display: ${props => props.mobile ? 'none' : 'flex'};
+    align-items: center;
+    height: 40px;
+
+    @media only screen and (max-width: 800px) {
+        display: ${props => props.mobile ? 'flex' : 'none'};
+    }
+    
+
+`;
