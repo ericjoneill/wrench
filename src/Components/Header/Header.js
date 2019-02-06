@@ -92,5 +92,19 @@ let IconContainer = styled.div`
         display: ${props => props.mobile ? 'flex' : 'none'};
     }
     
-
+    section {
+        border: 1px solid white;
+        border-radius: 100%;
+        min-width: 32px;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+    
+    img {
+        width: 20px;
+        height: 20px;
+    }
 `;
