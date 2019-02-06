@@ -98,3 +98,17 @@ let MenuListContainer = styled.ul`
     }
 `;
 
+class Menu extends React.Component {
+    render() {
+        return (
+            <nav style={{ margin: '-20px 0 0 10px' }}>
+                <MenuContainer>
+
+                    <ToggleButton type="checkbox" id='menuController'/>
+
+                </MenuContainer>
+            </nav>
+        )
+    }
+}
+
