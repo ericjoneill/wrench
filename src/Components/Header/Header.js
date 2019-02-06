@@ -78,3 +78,8 @@ let CategoryContainer = styled.section`
         display: none;
     }
 `;
+let Category = styled.h1`
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+`;
