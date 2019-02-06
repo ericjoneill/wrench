@@ -65,3 +65,16 @@ let SearchContainer = styled.div`
         background-repeat: no-repeat;
     }
 `;
+let CategoryContainer = styled.section`
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    margin: 0 3% 0 0;
+
+    @media only screen and (max-width: 800px) {
+        display: none;
+    }
+`;
