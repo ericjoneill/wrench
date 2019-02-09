@@ -42,6 +42,12 @@ let CheckoutButton = styled.button`
     transition: all 0.2s ease;
     padding: 0;
 
+        &:hover {
+        background-color: white;
+        color: ${props => props.color};
+        font-weight: 400;
+    }
+
 
 `;
 class Cart extends React.Component {
