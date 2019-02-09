@@ -1,10 +1,5 @@
 import React from 'react';
-import swal from 'sweetalert';
-import Header from '../Header/Header';
 import styled from 'styled-components';
-import Popup from '../Popup/Popup';
-
-import Stripe from '../Stripe/Stripe';
 
 let RemoveButton = styled.button`
     width: 40px;
@@ -49,3 +44,19 @@ let CheckoutButton = styled.button`
 
 
 `;
+class Cart extends React.Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            isRedirect: false,
+            redirectPath: '/login',
+            showPopup: false,
+            askedUser: false,
+            cartTotal: 0,
+            savingsTotal: 0,
+            orderTotal: 0
+        }
+    }
+}
