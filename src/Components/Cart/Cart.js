@@ -1,6 +1,10 @@
 import React from 'react';
+import swal from 'sweetalert';
+import Header from '../Header/Header';
 import styled from 'styled-components';
+import Popup from '../Popup/Popup';
 
+import Stripe from '../Stripe/Stripe';
 
 let RemoveButton = styled.button`
     width: 40px;
@@ -29,3 +33,19 @@ let RemoveButton = styled.button`
     }
 `;
 
+let CheckoutButton = styled.button`
+    border-style: none;
+    font-size: 16px;
+    color: white;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 0;
+    font-weight: normal;
+    background-color: ${props => props.color};
+    border: 1px solid ${props => props.color};
+    transition: all 0.2s ease;
+    padding: 0;
+
+
+`;
