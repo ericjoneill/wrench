@@ -254,3 +254,32 @@
 .cart_page_empty-container {
     margin: auto;
 }
+
+.cart_page_empty-container div {
+    display: flex;
+}
+
+.cart_page_empty-container img {
+    height: 100px;
+}
+
+.cart_page_empty-container h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.cart_page_empty-container button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    margin-top: 20px;
+    background-color: #8E0E34;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
+    border-radius: 2px;
+    border-bottom: 4px solid rgb(99, 7, 34);
+    cursor: pointer;
+}
