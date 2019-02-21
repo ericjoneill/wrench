@@ -11,3 +11,16 @@ const CURRENCY = 'USD';
 const successPayment = data => { 
   alert('Payment Successful');
 };
+
+const errorPayment = data => {
+  alert('Payment Error');
+};
+
+// const onToken = (amount, description) => token =>
+//   axios.post(PAYMENT_SERVER_URL,
+//     {
+//       description,
+//       source: token.id,
+//       currency: CURRENCY,
+//       amount: fromEuroToCent(amount)
+//     })
