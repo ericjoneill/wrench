@@ -31,6 +31,11 @@ const Checkout = ({ name, description, amount }) =>
   <StripeCheckout
     name='Krause E-Commerce'
     image=""
+    description='Purchase everything in your cart.'
+    amount={amount}
+    // token={onToken(amount, description)}
+    currency={CURRENCY}
     stripeKey={'pk_test_dJjVRLdf6PHtU9uso90p74cF'}
   />
 
+export default Checkout;
