@@ -24,3 +24,13 @@ const errorPayment = data => {
 //       currency: CURRENCY,
 //       amount: fromEuroToCent(amount)
 //     })
+//     .then(successPayment)
+//     .catch(errorPayment);
+
+const Checkout = ({ name, description, amount }) =>
+  <StripeCheckout
+    name='Krause E-Commerce'
+    image=""
+    stripeKey={'pk_test_dJjVRLdf6PHtU9uso90p74cF'}
+  />
+
