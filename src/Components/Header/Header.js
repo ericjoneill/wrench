@@ -1,3 +1,16 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import './Header.css';
+import styled from 'styled-components';
+import ShoppingCartIcon from '../../resources/online-shopping-cart.png';
+import Tire from '../../resources/tire.png';
+import More from '../../resources/ellipsis.png';
+import Oil from '../../resources/gasoline.png';
+import KrauseLogo from '../../resources/JL_eCommerce.png';
+import { allProducts } from '../../Products';
+import Menu from '../Menu/Menu';
+import { updateProductsToDisplay } from '../../Redux/reducer';
 
 let SearchContainer = styled.div`
     width: 26%;
@@ -108,3 +121,127 @@ let IconContainer = styled.div`
         height: 20px;
     }
 `;
+
+class Header extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            searchInput: '',
+            isIE: false
+        }
+    }
+
+    componentDidMount() {
+        if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+            this.setState({ isIE: true })
+        }
+    }
+
+    filterProducts = () => {
+        let productsToDisplay = [];
+        for (let i = 0; i < allProducts.length; i++) {
+            for (let j = 0; j < allProducts[i].length; j++) {
+                if (allProducts[i][j].productTitle.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
+                    productsToDisplay.push(allProducts[i][j])
+                }
+            }
+        }
+        if (this.props.scrollToProducts) {
+            this.props.scrollToProducts(230);
+        }
+        if (this.props.updateState)
+            this.props.updateState();
+        this.props.updateProductsToDisplay(productsToDisplay);
+    }
+
+    render() {
+        console.log(this.state)
+        return (
+            <header className='main_header'>
+                <section className='main_logo_container'>
+                    <Link to='/'>
+                        <img src={KrauseLogo} alt='' />
+                    </Link>
+                </section>
+
+                <SearchContainer>
+                    <input onChange={(text) => { this.setState({ searchInput: text.target.value }); }} placeholder='Search products...' />
+                    <Link to={{ pathname: '/', query: { fromLanding: false } }}><button style={this.state.isIE ? { marginTop: '2px' } : null} onClick={() => this.filterProducts()} /></Link>
+                </SearchContainer>
+
+                <CategoryContainer>
+                    <Link onClick={() => { this.props.fromLanding && this.props.changeCategory('4PackContainer', -120) }} to={{ pathname: '/', query: { productInfo: 'oil' } }} >
+                        <IconContainer>
+                            <section>
+                                <img src={Oil} alt='' />
+                            </section>
+
+                            <Category>Oil<br />Changes</Category>
+                        </IconContainer>
+                    </Link>
+
+                    <Link onClick={() => { this.props.fromLanding && this.props.changeCategory('AdditionalPackContainer', -120) }} to={{ pathname: '/', query: { productInfo: 'additional' } }} >
+                        <IconContainer>
+                            <section>
+                                <img src={Tire} alt='' />
+                            </section>
+
+                            <Category>Additonal<br />Products</Category>
+                        </IconContainer>
+                    </Link>
+
+                    <Link onClick={() => { this.props.fromLanding && this.props.changeCategory('AllProductsContainer', -120) }} to={{ pathname: '/', query: { productInfo: 'all' } }} >
+                        <IconContainer>
+                            <section>
+                                <img src={More} alt='' />
+                            </section>
+
+                            <Category>All<br />Products</Category>
+                        </IconContainer>
+                    </Link>
+
+                    {/* {this.props.isLoggedIn
+                        ? <Link to='/my-account'>
+                            <div className='header_options_container'>
+                                <section>
+                                    <img src={UserIcon} alt='' />
+                                </section>
+                                <h1>My Account</h1>
+                            </div>
+                        </Link>
+                        : <Link to='/login'>
+                            <div className='header_options_container'>
+                                <section>
+                                    <img src={UserIcon} alt='' />
+                                </section>
+                                <h1>Log In</h1>
+                            </div>
+                        </Link>
+                    } */}
+                    <Link to='/cart'>
+                        <IconContainer>
+                            <section>
+                                <img src={ShoppingCartIcon} alt='' />
+                            </section>
+
+                            <Category>{this.props.cartItems.length}</Category>
+                        </IconContainer>
+                    </Link>
+                </CategoryContainer>
+
+                <IconContainer mobile>
+                    <Menu fromLanding={this.props.fromLanding} changeCategory={this.props.changeCategory} />
+                </IconContainer>
+
+
+            </header>
+        )
+    }
+}
+
+function mapStateToProps(state) {
+    return { isLoggedIn: state.isLoggedIn, cartItems: state.cartItems };
+}
+
+export default connect(mapStateToProps, { updateProductsToDisplay })(Header);
