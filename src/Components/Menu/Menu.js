@@ -38,7 +38,7 @@ let ToggleButton = styled.input`
     &:checked ~ span:nth-last-child(3)
     {
       opacity: 0;
-      transform: rotate(0deg) scale(0.2, 0.2);
+      transform: rotate(0deg) scale(0.1, 0.2);
     }
     &:checked ~ span:nth-last-child(2)
     {
